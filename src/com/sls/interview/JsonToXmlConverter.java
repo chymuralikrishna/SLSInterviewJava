@@ -15,13 +15,13 @@ String jsonString = "{\"employee\":{\"id\":\"101\",\"name\":\"John\",\"age\":\"3
 // Parse JSON string to create a JSONObject
 JSONObject jsonObject = new JSONObject(jsonString);
 // Create JAXBContext and Marshaller
-JAXBContext jaxbContext = JAXBContext.newInstance(Employee.class);
+JAXBContext jaxbContext = JAXBContext.newInstance(EmployeeTest.class);
 Marshaller marshaller = jaxbContext.createMarshaller();
-// Convert JSONObject to Employee object
-Employee employee = new Employee(jsonObject.getJSONObject("employee").getString("id"),
+// Convert JSONObject to EmployeeTest object
+EmployeeTest employee = new EmployeeTest(jsonObject.getJSONObject("employee").getString("id"),
 jsonObject.getJSONObject("employee").getString("name"),
 jsonObject.getJSONObject("employee").getString("age"));
-// Convert Employee object to XML
+// Convert EmployeeTest object to XML
 StringWriter stringWriter = new StringWriter();
 marshaller.marshal(employee, new StreamResult(stringWriter));
 String xmlString = stringWriter.toString();
@@ -29,12 +29,12 @@ System.out.println("JSON to XML conversion:\n" + xmlString);
 }
 }
 @XmlRootElement
-class Employee {
+class EmployeeTest {
 String id;
 String name;
 String age;
-public Employee() {}
-public Employee(String id, String name, String age) {
+public EmployeeTest() {}
+public EmployeeTest(String id, String name, String age) {
 this.id = id;
 this.name = name;
 this.age = age;
