@@ -7,7 +7,7 @@ public class Car extends Vehicle1 {
 		// TODO Auto-generated method stub
 		
 	}
-
+ 
 	@Override
 	protected void stop() {
 		// TODO Auto-generated method stub
