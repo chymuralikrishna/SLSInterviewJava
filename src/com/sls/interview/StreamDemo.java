@@ -17,6 +17,5 @@ public static void main(String[] args) {
 	List<String> listFromStream=stream.collect(Collectors.toList());
 	System.out.println(listFromStream);
 	System.out.println(list);
-	
 }
 }

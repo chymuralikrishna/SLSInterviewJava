@@ -5,6 +5,7 @@ import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
@@ -16,6 +17,19 @@ public class FunctionalInterface2 {
 	
 	public static void main(String args[])
 {
+		
+	//    
+	    Function<Integer, Double> functionName=(inputParameterIntegerType)->{
+	    	return inputParameterIntegerType*2.0; // returning output Parameter Double Type
+	    };
+
+	    
+	    System.out.println(" anonymouse function interface-> "+ functionName.apply(10));
+	    
+	    // Now treble the output of half function
+	    functionName = functionName.andThen(a -> 3 * a);
+	    System.out.println(" anonymouse function interface after andThen -> "+ functionName.apply(10));
+	    
     int a = 5;
 
     // lambda expression to define the calculate method
@@ -29,8 +43,6 @@ public class FunctionalInterface2 {
 //    Consumer
     System.out.println("*** Consumer interface");
     Consumer<Integer> consumer=(value)->{System.out.println(value);};
-    
-    
     
    
     /*public consumer(int value) {
