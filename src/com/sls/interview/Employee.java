@@ -1,9 +1,19 @@
 package com.sls.interview;
+import java.util.Date;
 import java.util.Objects;
 
 public class Employee {
 	private int ecno;
 	private String name;
+	private Date dob;
+	
+	
+	public Employee(int ecno, String name, Date dob) {
+		super();
+		this.ecno = ecno;
+		this.name = name;
+		this.dob = dob;
+	}
 	public int getEcno() {
 		return ecno;
 	}
@@ -15,6 +25,13 @@ public class Employee {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
 	@Override
 	public int hashCode() {

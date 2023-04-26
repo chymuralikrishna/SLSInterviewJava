@@ -1,6 +1,10 @@
 package com.sls.interview;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,9 +20,12 @@ import java.util.Stack;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.Vector;
+import java.util.stream.Collectors;
+
+import org.json.JSONArray;
 
 public class CollectionsDemo {
-public static void main(String[] args) {
+public static void main(String[] args) throws ParseException {
 //Iterable<T>
 //	Collection<E>
 //	List<E>
@@ -217,5 +224,47 @@ public static void main(String[] args) {
 	tm.put(6,"Hyderabad");
 //	tm.put(null,"Hyderabad"); // TreeMap does not allow null
 	System.out.println(tm);
+	
+	
+	//Sorted list using lambda
+
+	List<Employee> empList=new ArrayList<Employee>();
+	
+	SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+	empList.add(new Employee(3, "sdfsfwe", sdf.parse("1987-01-01")));
+	empList.add(new Employee(7, "nwrgxd", sdf.parse("1985-01-01")));
+	empList.add(new Employee(2, "d sfzcf", sdf.parse("1989-01-01")));
+	empList.add(new Employee(9, "v awmsald", sdf.parse("1990-01-01")));
+	empList.add(new Employee(4, "w pfas", sdf.parse("1983-01-01")));
+	
+	/*
+	 * Intermediate Operations :
+	 * 
+	 * map(), filter(), distinct(), sorted(), limit(), skip()
+	 * 
+	 * Terminal Operations :
+	 * 
+	 * forEach(), toArray(), reduce(), collect(), min(), max(), count(), anyMatch(),
+	 * allMatch(), noneMatch(), findFirst(), findAny()
+	 */
+
+
+	List<Employee> empListX=empList.stream().sorted(Comparator.comparingInt(Employee::getEcno).thenComparing(Employee::getDob)).collect(Collectors.toList());
+	empListX.stream().forEach((e)->System.out.println(e.getEcno()+","+e.getName()+","+sdf.format(e.getDob())));
+//ecno>5
+	empListX.stream().filter(e->e.getEcno()>5).map(e->e.getName()).collect(Collectors.toList()).forEach(e->System.out.println(e));
+//	Same alternative to e->e.getName() Vs Employee::getName
+	empListX.stream().filter(e->e.getEcno()>5).map(Employee::getName).collect(Collectors.toList()).forEach(e->System.out.println(e));
+		
+//	
+
 }
+
+
+
+
+
+
+	
 }
+
