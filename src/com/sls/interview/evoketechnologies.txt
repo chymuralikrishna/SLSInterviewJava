@@ -1,0 +1,28 @@
+-> solid principals
+->Streams for sorting
+->What are the advantages of spring boot
+->How Spring security works in Spring API
+->How we authenticate and authorize API calls
+->How to validate tokens in spring
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .anyRequest().authenticated()
+            .and()
+            .oauth2ResourceServer()
+            .jwt()
+            .decoder(jwtDecoder());
+    }
+
+    @Bean
+    public JwtDecoder jwtDecoder() {
+        // configure a JWT decoder to validate the token against a public key or secret key
+        return new NimbusJwtDecoder(...);
+    }
+
+}
