@@ -17,7 +17,7 @@ public class NecInterview {
 			
 			count.put(String.valueOf(c),count.get(String.valueOf(c))==null?1:count.get(String.valueOf(c))+1);
 		}
-		
+		 
 		System.out.println(count);
 		
 		/*
